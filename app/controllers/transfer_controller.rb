@@ -2,6 +2,7 @@ class TransferController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:recieve_order, :recieve_confirmation]
 
   def recieve_order
+    headers['Access-Control-Allow-Origin'] = '*'
     puts params
 
     if params["subtotal_price"].to_f > 10000
