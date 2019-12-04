@@ -12,7 +12,7 @@ class TransferMailer < ApplicationMailer
     # name = params[]
     # company name = params[]
 
-    mail(to: email, from: 'support@iconicvault.com', subject: 'Wire Transfer Instructions')
+    mail(to: email, from: 'care@iconicvault.com', subject: 'Wire Transfer Instructions')
   end
 
   def followup_email(params, order)
@@ -23,7 +23,7 @@ class TransferMailer < ApplicationMailer
 
     @confirmation_number = params["confirmation_number"]
 
-    mail(to: email, from: 'support@iconicvault.com', subject: 'Wire Transfer Confirmation')
+    mail(to: email, from: 'care@iconicvault.com', subject: 'Wire Transfer Confirmation')
   end
 
   def internal_email(params, test = false)
@@ -34,7 +34,7 @@ class TransferMailer < ApplicationMailer
 
     @confirmation_number = params["confirmation_number"]
 
-    mail(to: email, from: 'support@iconicvault.com', subject: 'Internal Wire Transfer Confirmation')
+    mail(to: email, from: 'care@iconicvault.com', subject: 'Internal Wire Transfer Confirmation')
   end
 
 
