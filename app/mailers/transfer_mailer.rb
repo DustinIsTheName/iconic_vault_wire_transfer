@@ -9,21 +9,26 @@ class TransferMailer < ApplicationMailer
     end
 
     @order_id = params["id"]
-    # name = params[]
+    @name = params["name"]
     # company name = params[]
 
-    mail(to: email, from: 'care@iconicvault.com', subject: 'Wire Transfer Instructions')
+    mail(to: email, from: 'care@iconicvault.com', subject: "Wire Transfer Instructions for Order #{@name}")
   end
 
-  def followup_email(params, order)
+  def followup_email(params, order, test = false)
     email = order.email
     unless email
       email = 'dustin@wittycreative.com'
     end
 
-    @confirmation_number = params["confirmation_number"]
+    if test
+      email = 'dustin@wittycreative.com'
+    end
 
-    mail(to: email, from: 'care@iconicvault.com', subject: 'Wire Transfer Confirmation')
+    @confirmation_number = params["confirmation_number"]
+    @name = order.name
+
+    mail(to: email, from: 'care@iconicvault.com', subject: "Wire Transfer Confirmation for Order #{@name}")
   end
 
   def internal_email(params, test = false)
