@@ -5,7 +5,7 @@ class TransferController < ApplicationController
     headers['Access-Control-Allow-Origin'] = '*'
     puts params
 
-    if params["subtotal_price"].to_f > 10000
+    if params["payment_gateway_names"].include? "Wire Transfer" or params["payment_gateway_names"].include? "Wire Transfer"
       TransferMailer.instructions_email(params).deliver
     end
 
